@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 5%;
+}
+input, button {
+    padding: 2%;
+    margin: 2%;
+    border-radius: 5px;
+    border: none;
+    width: 80%;
+    max-width: 300px;
+}
+button {
+    cursor: pointer;
+    background: teal;
+    color: white;
+}
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 400px;
+}
+td {
+    width: 20%;
+    height: 40px;
+    border: 1px solid white;
+    text-align: center;
+    font-size: 1.2em;
+}
+#output {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
