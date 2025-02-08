@@ -1,11 +1,23 @@
 function generateMatrix(key) {
     let alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"; // 'J' is merged with 'I'
     let keySet = new Set(key.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, ''));
-    let matrixArr = [...keySet];
+    let matrixArr = [];
+
+    for (let char of keySet) {
+        if (char === 'I') {
+            matrixArr.push("I / J"); // Replace 'I' with 'I/J'
+        } else {
+            matrixArr.push(char);
+        }
+    }
 
     for (let char of alphabet) {
         if (!keySet.has(char)) {
-            matrixArr.push(char);
+            if (char === 'I') {
+                matrixArr.push("I / J");
+            } else {
+                matrixArr.push(char);
+            }
         }
     }
 
@@ -29,7 +41,6 @@ function displayMatrix(matrix) {
         table.appendChild(tr);
     }
 }
-
 function preprocessText(text) {
     text = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
     let processedText = "";
