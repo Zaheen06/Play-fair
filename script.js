@@ -5,7 +5,7 @@ function generateMatrix(key) {
 
     for (let char of keySet) {
         if (char === 'I') {
-            matrixArr.push("I / J"); // Replace 'I' with 'I/J'
+            matrixArr.push("I"); // Store only 'I' internally
         } else {
             matrixArr.push(char);
         }
@@ -14,7 +14,7 @@ function generateMatrix(key) {
     for (let char of alphabet) {
         if (!keySet.has(char)) {
             if (char === 'I') {
-                matrixArr.push("I / J");
+                matrixArr.push("I"); // Store only 'I' internally
             } else {
                 matrixArr.push(char);
             }
@@ -35,12 +35,13 @@ function displayMatrix(matrix) {
         let tr = document.createElement("tr");
         for (let cell of row) {
             let td = document.createElement("td");
-            td.textContent = cell;
+            td.textContent = (cell === "I") ? "I / J" : cell; // Display 'I / J' but use 'I' internally
             tr.appendChild(td);
         }
         table.appendChild(tr);
     }
 }
+
 function preprocessText(text) {
     text = text.toUpperCase().replace(/J/g, 'I').replace(/[^A-Z]/g, '');
     let processedText = "";
@@ -55,6 +56,7 @@ function preprocessText(text) {
 }
 
 function findPosition(matrix, letter) {
+    if (letter === 'J') letter = 'I'; // Treat 'J' as 'I'
     for (let row = 0; row < 5; row++) {
         for (let col = 0; col < 5; col++) {
             if (matrix[row][col] === letter) {
